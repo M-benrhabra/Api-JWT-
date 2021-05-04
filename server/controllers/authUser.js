@@ -94,6 +94,6 @@ exports.getallUser = async (req, res) => {
 
 
 exports.logout = (req, res) => {
-    res.cookie('jwt_token', '', { maxAge: 1 })
+    return res.status(200).clearCookie('jwt_token').json({isAuth:false,role:''})
     // return res.redirect('/')
 }

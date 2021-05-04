@@ -1,13 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import { UserContext } from '../contextApi/MyContext'
 import axios from 'axios'
 axios.defaults.withCredentials = true
 
 const SignUp = (props) => {
+    const { infos:{isAuth , role},setInfos} = useContext(UserContext)
+
     const initialState = { first_name:'', last_name:'', email:'', password:'', role: 'user'}
-    const [infos, setInfos] = useState(initialState)
+    const [infosUser, setInfosUser] = useState(initialState)
     const changeValue = (e) => {
-        setInfos({
-            ...infos,
+        setInfosUser({
+            ...infosUser,
             [e.target.name] : e.target.value
         })
     }
@@ -15,11 +18,13 @@ const SignUp = (props) => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const data = await axios.post('http://localhost:4040/api/signUp', infos,
+        const data = await axios.post('http://localhost:4040/api/signUp', infosUser,
         { withCredentials: true })
         // console.log(data);
-        if(data) return console.log(data.data)
-        console.log(data.data)
+        if(data){
+            console.log(data, "register");
+            setInfos(data.data)
+        }
     }
 
     return (

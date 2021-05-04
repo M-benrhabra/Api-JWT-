@@ -14,8 +14,8 @@ import { UserContext } from '../contextApi/MyContext'
 
 const Router = () => {
 
-    const { isAuth , role} = useContext(UserContext)
-
+    const { infos:{isAuth , role}} = useContext(UserContext)
+    console.table({isAuth , role});
     return (
         <div className="">
         <Header title = 'Api JWT'  />

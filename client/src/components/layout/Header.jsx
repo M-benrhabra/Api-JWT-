@@ -5,7 +5,7 @@ import { UserContext } from '../../contextApi/MyContext'
 
 const Header = (props) => {
     const {title} = props
-    const { isAuth } = useContext(UserContext)
+    const { infos:{isAuth , role}} = useContext(UserContext)
 
     return (
         <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-3 py0">
