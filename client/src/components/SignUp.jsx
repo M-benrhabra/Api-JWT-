@@ -4,7 +4,7 @@ import axios from 'axios'
 axios.defaults.withCredentials = true
 
 const SignUp = (props) => {
-    const { infos:{isAuth , role},setInfos} = useContext(UserContext)
+    const { setInfos} = useContext(UserContext)
 
     const initialState = { first_name:'', last_name:'', email:'', password:'', role: 'user'}
     const [infosUser, setInfosUser] = useState(initialState)
